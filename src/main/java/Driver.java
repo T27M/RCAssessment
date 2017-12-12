@@ -1,7 +1,4 @@
-import JsonParser.FileParser;
-import JsonParser.IJsonParser;
-import JsonParser.SearchData;
-import JsonParser.Vehicle;
+import JsonParser.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -45,10 +42,10 @@ public class Driver {
         ApplicationContext context = new AnnotationConfigApplicationContext(Driver.class);
         IJsonParser parser = context.getBean(IJsonParser.class);
 
-        SearchData data = parser.getData();
-        for (Vehicle vehicle : data.vehicles)
+        JsonRoot data = parser.getData();
+        for (Vehicle vehicle : data.searchData.vehicles)
         {
-            System.out.print(vehicle.toString());
+            System.out.println(vehicle.toString());
         }
     }
 }

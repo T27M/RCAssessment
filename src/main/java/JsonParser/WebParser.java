@@ -14,7 +14,7 @@ public class WebParser implements IJsonParser {
     private final String url = "http://www.rentalcars.com/js/vehicles.json";
 
     @Override
-    public JsonParser.SearchData getData() throws IOException {
+    public JsonRoot getData() throws IOException {
 
         URL jsonData = new URL(url);
         URLConnection connection = jsonData.openConnection();
@@ -22,6 +22,6 @@ public class WebParser implements IJsonParser {
         String jsonString = IOUtils.toString(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 
         Gson gson = new Gson();
-        return gson.fromJson(new FileReader(jsonString), JsonParser.SearchData.class);
+        return gson.fromJson(new FileReader(jsonString), JsonRoot.class);
     }
 }
