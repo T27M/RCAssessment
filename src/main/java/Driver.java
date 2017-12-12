@@ -35,7 +35,7 @@ public class Driver {
 
     @Bean
     IJsonParser dataService() {
-        return new FileParser();
+        return new WebParser();
     }
 
     public static void main(String[] args) throws IOException {

@@ -22,6 +22,6 @@ public class WebParser implements IJsonParser {
         String jsonString = IOUtils.toString(new InputStreamReader(connection.getInputStream(), "UTF-8"));
 
         Gson gson = new Gson();
-        return gson.fromJson(new FileReader(jsonString), JsonRoot.class);
+        return gson.fromJson(jsonString, JsonRoot.class);
     }
 }
