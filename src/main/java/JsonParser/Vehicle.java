@@ -1,5 +1,17 @@
 package JsonParser;
 
-public class Vehicle {
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
+public class Vehicle {
+    public String sipp;
+    public String name;
+    public BigDecimal price;
+    public String supplier;
+    public Double raiting;
+
+    @Override
+    public String toString() {
+        return name + " " + new DecimalFormat("#0.##").format(price);
+    }
 }

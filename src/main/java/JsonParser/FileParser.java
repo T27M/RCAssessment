@@ -10,9 +10,10 @@ public class FileParser implements IJsonParser {
     private final String filename = "vehicles.json";
 
     @Override
-    public SearchData GetData() throws FileNotFoundException {
+    public JsonParser.SearchData getData() throws FileNotFoundException {
         Gson gson = new Gson();
         String jsonFile = FileParser.class.getClassLoader().getResource(filename).getFile();
+
         return gson.fromJson(new FileReader(jsonFile), SearchData.class);
     }
 }
