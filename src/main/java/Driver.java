@@ -1,20 +1,23 @@
+import JsonParser.FileParser;
+import JsonParser.IJsonParser;
 import JsonParser.SearchData;
-import com.google.gson.Gson;
+import JsonParser.Vehicle;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.IOException;
 
 public class Driver {
+    public static void main(String[] args) throws IOException {
+        ApplicationContext context = new AnnotationConfigApplicationContext(Driver.class);
 
+        IJsonParser parser = context.getBean(FileParser.class);
 
-    public static void main(String[] args) throws FileNotFoundException {
-        Gson gson = new Gson();
+        SearchData data = parser.GetData();
 
-        String jsonFile = Driver.class.getClassLoader().getResource("vehicles.json").getFile();
-        SearchData data = gson.fromJson(new FileReader(jsonFile), SearchData.class);
-
-
-
-
+        for (Vehicle vehicle : data.vehicles)
+        {
+            System.out.print(vehicle.toString());
+        }
     }
 }
