@@ -8,10 +8,10 @@ public class Vehicle {
     public String name;
     public BigDecimal price;
     public String supplier;
-    public Double raiting;
+    public Double rating;
 
     @Override
     public String toString() {
-        return name + " " + new DecimalFormat("#0.##").format(price);
+        return name + " - " + new DecimalFormat("#0.##").format(price);
     }
 }

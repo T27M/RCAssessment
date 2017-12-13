@@ -3,7 +3,6 @@ package JsonParser;
 import com.google.gson.Gson;
 import org.apache.commons.io.IOUtils;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
