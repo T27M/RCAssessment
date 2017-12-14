@@ -1,5 +1,7 @@
 package Service.CarSpec;
 
+import JsonParser.Sipp;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -72,7 +74,35 @@ public class DefaultCarSpec implements ICarSpec {
     }
 
     @Override
-    public String getCarType(String sipp) {
+    public Sipp createSipp(String sipp) {
+
+        char[] sippChar = sipp.toCharArray();
+
+        Sipp _sipp = new Sipp();
+
+        // Door letter rules
+        if (doorLetters.contains(sippChar[1])) {
+            _sipp.carType = carType.get(sippChar[0]);
+            _sipp.carTypeDoors = doorOrCarType.get(sippChar[1]);
+        } else if (sippChar[1] == 'X') {
+            // Special car rules
+            _sipp.setCombined();
+            _sipp.carType = carType.get(sippChar[0]);
+            _sipp.carTypeDoors = carType.get(sippChar[1]);
+        } else {
+            _sipp.setCombined();
+            _sipp.carType = carType.get(sippChar[0]);
+            _sipp.carTypeDoors = doorOrCarType.get(sippChar[1]);
+        }
+
+        _sipp.transmission = transmission.get(sippChar[2]);
+        _sipp.fuelAc = fuelAirCon.get(sippChar[3]);
+
+        return _sipp;
+    }
+
+    @Override
+    public String getCarType1(String sipp) {
 
         String _carType = "";
 
@@ -80,7 +110,7 @@ public class DefaultCarSpec implements ICarSpec {
 
         // Special rules for door letters
         if (doorLetters.contains(_sipp[1])) {
-            _carType += carType.get(_sipp[0]) + " - " + doorOrCarType.get(_sipp[1]);
+            _carType += carType.get(_sipp[0]);
         } else if (_sipp[1] == 'X') {
             // Special car type
             _carType += carType.get(_sipp[0]) + " " + carType.get(_sipp[1]);

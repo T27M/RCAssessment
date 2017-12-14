@@ -5,6 +5,7 @@ import java.text.DecimalFormat;
 
 public class Vehicle {
     public String sipp;
+    public Sipp Sipp;
     public String name;
     public BigDecimal price;
     public String supplier;

@@ -27,11 +27,11 @@ public class Driver {
         ApplicationContext context = new AnnotationConfigApplicationContext(Driver.class);
         IRentalCars rcService = context.getBean(IRentalCars.class);
 
-        rcService.displayCars();
+        //rcService.displayCars();
         //rcService.displaySpec();
 
         // Not 100% clear if Compact is different to Compact Estate etc..
-        //rcService.displayByRaiting();
+        rcService.displayByRaiting();
         //rcService.displayByScore();
     }
 }

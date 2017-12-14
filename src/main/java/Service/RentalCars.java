@@ -1,6 +1,7 @@
 package Service;
 
 import JsonParser.IJsonParser;
+import JsonParser.Sipp;
 import JsonParser.Vehicle;
 import Service.CarSpec.ICarSpec;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,13 @@ public class RentalCars implements IRentalCars {
 
     private ArrayList<Vehicle> getData() {
         try {
-            return parser.getData().searchData.vehicles;
+            ArrayList<Vehicle> vehicle = parser.getData().searchData.vehicles;
+
+            for (Vehicle v : vehicle) {
+                v.Sipp = carSpec.createSipp(v.sipp);
+            }
+
+            return vehicle;
         } catch (IOException e) {
             System.out.println("Could not fetch data");
             return new ArrayList<>();
@@ -67,6 +74,8 @@ public class RentalCars implements IRentalCars {
             // Get car type
             String carType = carSpec.getCarType(vehicle.sipp);
 
+            System.out.println(carType);
+
             // Check rankedlist for record
             if (!rankingVehicles.containsKey(carType)) {
                 // Add vehicle for this car type
@@ -87,7 +96,7 @@ public class RentalCars implements IRentalCars {
         for (Vehicle vehicle : rankingVehicles.values()) {
             String carType = carSpec.getCarType(vehicle.sipp);
             String out = Integer.toString(++i) + ". " + vehicle.name + " - " + carType + " - " + vehicle.supplier + " - " + vehicle.rating;
-            System.out.println(out);
+            //System.out.println(out);
         }
     }
 
