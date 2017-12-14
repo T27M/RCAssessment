@@ -36,8 +36,11 @@ public class RentalCars implements IRentalCars {
 
     @Override
     public void displayCars() {
+        ArrayList<Vehicle> vehicles = this.getData();
+        vehicles.sort(Comparator.comparing(v -> v.price));
+
         int i = 0;
-        for (Vehicle vehicle : this.getData()) {
+        for (Vehicle vehicle : vehicles) {
             System.out.println(Integer.toString(++i) + ". " + vehicle.toString());
         }
     }
