@@ -1,7 +1,9 @@
 package JsonParser;
 
-import java.io.IOException;
+import Model.SpecJson.VehicleSpec;
+import Model.VehicleJson.VehicleSearch;
 
 public interface IJsonParser {
-    JsonRoot getData() throws IOException;
+    VehicleSearch getVehicleSearch();
+    VehicleSpec getVehicleSpec();
 }

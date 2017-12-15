@@ -1,0 +1,39 @@
+{
+  "car_type": {
+    "M": "Mini",
+    "E": "Economy",
+    "C": "Compact",
+    "I": "Intermediate",
+    "S": "Standard",
+    "F": "Full size",
+    "P": "Premium",
+    "L": "Luxury",
+    "X": "Special"
+  },
+  "door_car_type": {
+    "B": "2 doors",
+    "C": "4 doors",
+    "D": "5 doors",
+    "W": "Estate",
+    "T": "Convertible",
+    "F": "SUV",
+    "P": "Pick up",
+    "V": "Passenger Van"
+  },
+  "transmission": {
+    "M": "Manual",
+    "A": "Automatic"
+  },
+  "fuel_ac": {
+    "N": "Petrol/no AC",
+    "R": "Petrol/AC"
+  },
+  "door_letters": [
+    "B",
+    "C",
+    "D"
+  ],
+  "special_letters":[
+    "X"
+  ]
+}

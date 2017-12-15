@@ -1,9 +1,7 @@
 package Service.CarSpec;
 
-import JsonParser.Sipp;
+import Model.VehicleJson.Sipp;
 
 public interface ICarSpec {
-    String getSpec(String sipp);
-    String getCarType(String sipp);
-    Sipp createSipp(String sipp);
+    Sipp getSipp(String sipp);
 }
