@@ -11,6 +11,7 @@ public class Vehicle {
     public String supplier;
     public Double rating;
     private Double _score;
+    private Double _sum;
 
     public Double getRaiting() {
         return rating;
@@ -41,7 +42,8 @@ public class Vehicle {
         this._score = _score;
     }
 
-    public Double getSum(){
-        return _score + rating;
+    public Double getSum() {
+        _sum = _score + rating;
+        return _sum;
     }
 }

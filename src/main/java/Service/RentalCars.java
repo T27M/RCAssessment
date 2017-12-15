@@ -23,42 +23,42 @@ public class RentalCars implements IRentalCars {
         this.carScore = carScore;
     }
 
-    @Override
-    public void displayCars() {
+    public ArrayList<Vehicle> getCars() {
         ArrayList<Vehicle> vehicles = this.repository.getVehicleList();
         if (vehicles.isEmpty()) {
-            return;
+            return vehicles;
         }
 
         vehicles.sort(Comparator.comparing(v -> v.price));
 
-        int i = 0;
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(Integer.toString(++i) + ". " + vehicle.toString());
-        }
+        return vehicles;
     }
 
-    @Override
-    public void displaySpec() {
-        int i = 0;
-        for (Vehicle vehicle : this.repository.getVehicleList()) {
+    public ArrayList<Vehicle> getCarsWithSpec() {
+        ArrayList<Vehicle> vehicles = this.repository.getVehicleList();
+        if (vehicles.isEmpty()) {
+            return vehicles;
+        }
+
+        for (Vehicle vehicle : vehicles) {
 
             // Load the sipp
             vehicle.setSipp(carSpec.getSipp(vehicle.sipp));
-
-            System.out.println(Integer.toString(++i) + ". " + vehicle.getSpec());
         }
+
+        return vehicles;
     }
 
-    @Override
-    public void displayByRaiting() {
+    public Collection<Vehicle> getCarsByRaiting() {
         ArrayList<Vehicle> vehicles = this.repository.getVehicleList();
+        HashMap<String, Vehicle> rankingVehicles = new HashMap<>();
+
         if (vehicles.isEmpty()) {
-            return;
+            return rankingVehicles.values();
         }
 
         Collections.sort(vehicles, Comparator.comparing(Vehicle::getRaiting).reversed());
-        HashMap<String, Vehicle> rankingVehicles = new HashMap<>();
+
 
         for (Vehicle vehicle : vehicles) {
             // Get car type
@@ -71,20 +71,13 @@ public class RentalCars implements IRentalCars {
             }
         }
 
-        // Display results
-        int i = 0;
-        for (Vehicle vehicle : rankingVehicles.values()) {
-            String carType = carSpec.getSipp(vehicle.sipp).getCarType();
-            String out = Integer.toString(++i) + ". " + vehicle.name + " - " + carType + " - " + vehicle.supplier + " - " + vehicle.rating;
-            System.out.println(out);
-        }
+        return rankingVehicles.values();
     }
 
-    @Override
-    public void displayByScore() {
+    public ArrayList<Vehicle> getCarsByScore() {
         ArrayList<Vehicle> vehicles = this.repository.getVehicleList();
         if (vehicles.isEmpty()) {
-            return;
+            return vehicles;
         }
 
         // Get vehicle score
@@ -95,9 +88,41 @@ public class RentalCars implements IRentalCars {
         // Sort
         Collections.sort(vehicles, Comparator.comparing(Vehicle::getSum).reversed());
 
+        return vehicles;
+    }
+
+    @Override
+    public void displayCars() {
+        int i = 0;
+        for (Vehicle vehicle : getCars()) {
+            System.out.println(Integer.toString(++i) + ". " + vehicle.toString());
+        }
+    }
+
+    @Override
+    public void displaySpec() {
+        int i = 0;
+        for (Vehicle vehicle : getCarsWithSpec()) {
+            System.out.println(Integer.toString(++i) + ". " + vehicle.getSpec());
+        }
+    }
+
+    @Override
+    public void displayByRaiting() {
         // Display results
         int i = 0;
-        for (Vehicle vehicle : vehicles) {
+        for (Vehicle vehicle : getCarsByRaiting()) {
+            String carType = carSpec.getSipp(vehicle.sipp).getCarType();
+            String out = Integer.toString(++i) + ". " + vehicle.name + " - " + carType + " - " + vehicle.supplier + " - " + vehicle.rating;
+            System.out.println(out);
+        }
+    }
+
+    @Override
+    public void displayByScore() {
+        // Display results
+        int i = 0;
+        for (Vehicle vehicle : getCarsByScore()) {
             String out = Integer.toString(++i) + ". " +
                     vehicle.name + " - " +
                     Double.toString(vehicle.getScore()) + " - " +
