@@ -20,9 +20,16 @@ public class Driver {
         ApplicationContext context = new AnnotationConfigApplicationContext(Driver.class);
         IRentalCars rcService = context.getBean(IRentalCars.class);
 
-        //rcService.displayCars();
-        //rcService.displaySpec()
-        //rcService.displayByRaiting();
+        System.out.println("\n== Cars - Ascending price order  ===\n");
+        rcService.displayCars();
+
+        System.out.println("\n== Spec ===\n");
+        rcService.displaySpec();
+
+        System.out.println("\n== Raiting - Decending raiting order ===\n");
+        rcService.displayByRaiting();
+
+        System.out.println("\n== Score - Decending sum order ===\n");
         rcService.displayByScore();
     }
 }

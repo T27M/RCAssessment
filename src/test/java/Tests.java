@@ -123,4 +123,44 @@ public class Tests {
 
         Assert.assertEquals(expected, actual);
     }
+
+    @Test
+    public void TestSippPrint_NotCombined_Correct() {
+        Sipp sipp = new Sipp(false, "TEST", "T", "E", "S", "T");
+
+        String actual = sipp.toString();
+        String expected = "T, E - S - T";
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestSippPrint_NotCombined_Wrong() {
+        Sipp sipp = new Sipp(false, "TEST", "T", "E", "S", "T");
+
+        String actual = sipp.toString();
+        String expected = "T, E - S - E";
+
+        Assert.assertNotEquals(expected, actual);
+    }
+
+    @Test
+    public void TestSippPrint_Combined_Correct() {
+        Sipp sipp = new Sipp(true, "TEST", "T", "E", "S", "T");
+
+        String actual = sipp.toString();
+        String expected = "T E - S - T";
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestSippPrint_Combined_Wrong() {
+        Sipp sipp = new Sipp(true, "TEST", "T", "E", "S", "T");
+
+        String actual = sipp.toString();
+        String expected = "T E - E - T";
+
+        Assert.assertNotEquals(expected, actual);
+    }
 }
