@@ -42,8 +42,7 @@ public class Driver {
     }
 
     public static void main(String[] args) {
-
-        //ConsolePrint();
+        ConsolePrint(); // Comment out if trouble
         WebApp(args);
     }
 }
