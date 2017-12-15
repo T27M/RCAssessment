@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({"Data", "JsonParser", "Service", "Service.CarSpec"})
-public class Driver {
+public class ConsoleApp {
 
     @Bean
     IJsonParser jsonParser() {
@@ -17,7 +17,7 @@ public class Driver {
     }
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(Driver.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(ConsoleApp.class);
         IRentalCars rcService = context.getBean(IRentalCars.class);
 
         System.out.println("\n== Cars - Ascending price order  ===\n");
