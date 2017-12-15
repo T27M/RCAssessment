@@ -1,6 +1,7 @@
 package Data;
 
 import JsonParser.IJsonParser;
+import Model.ScoreJson.VehicleScore;
 import Model.SpecJson.VehicleSpec;
 import Model.VehicleJson.Vehicle;
 import org.springframework.stereotype.Component;
@@ -28,5 +29,10 @@ public class JsonVehicleRepository implements IRepository {
     @Override
     public VehicleSpec getVehicleSpec() {
         return parser.getVehicleSpec();
+    }
+
+    @Override
+    public VehicleScore getVehicleScore() {
+        return parser.getVehicleScore();
     }
 }

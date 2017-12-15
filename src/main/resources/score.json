@@ -1,0 +1,8 @@
+{
+  "manual_letter": "M",
+  "manual_transmission": 1.0,
+  "auto_letter": "A",
+  "auto_transmission": 5.0,
+  "ac_letter": "R",
+  "air_conditioned": 2.0
+}

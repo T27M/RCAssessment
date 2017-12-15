@@ -6,11 +6,15 @@ import java.text.DecimalFormat;
 public class Vehicle {
     public String sipp;
     private Sipp _sipp;
-    public Model.VehicleJson.Sipp Sipp;
     public String name;
     public BigDecimal price;
     public String supplier;
     public Double rating;
+    private Double _score;
+
+    public Double getRaiting() {
+        return rating;
+    }
 
     @Override
     public String toString() {
@@ -21,11 +25,23 @@ public class Vehicle {
         return name + " - " + sipp + " - " + _sipp.toString();
     }
 
-    public Sipp get_sipp() {
+    public Sipp getSipp() {
         return _sipp;
     }
 
-    public void set_sipp(Sipp _sipp) {
+    public void setSipp(Sipp _sipp) {
         this._sipp = _sipp;
+    }
+
+    public Double getScore() {
+        return _score;
+    }
+
+    public void set_score(Double _score) {
+        this._score = _score;
+    }
+
+    public Double getSum(){
+        return _score + rating;
     }
 }

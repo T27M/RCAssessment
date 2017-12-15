@@ -21,8 +21,8 @@ public class Driver {
         IRentalCars rcService = context.getBean(IRentalCars.class);
 
         //rcService.displayCars();
-        //rcService.displaySpec();
-        rcService.displayByRaiting();
-        //rcService.displayByScore();
+        //rcService.displaySpec()
+        //rcService.displayByRaiting();
+        rcService.displayByScore();
     }
 }

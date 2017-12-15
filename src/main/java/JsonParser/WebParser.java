@@ -1,5 +1,6 @@
 package JsonParser;
 
+import Model.ScoreJson.VehicleScore;
 import Model.SpecJson.VehicleSpec;
 import Model.VehicleJson.VehicleSearch;
 import com.google.gson.Gson;
@@ -31,6 +32,11 @@ public class WebParser implements IJsonParser {
 
     @Override
     public VehicleSpec getVehicleSpec() {
+        return null;
+    }
+
+    @Override
+    public VehicleScore getVehicleScore() {
         return null;
     }
 }
